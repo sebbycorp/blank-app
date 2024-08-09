@@ -1,1 +1,7 @@
 streamlit
+pymongo
+requests
+pandas
+streamlit-aggrid
+urllib3
+streamlit-elements

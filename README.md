@@ -17,3 +17,6 @@ A simple Streamlit app template for you to modify!
    ```
    $ streamlit run streamlit_app.py
    ```
+
+   
+https://docs.streamlit.io/get-started/installation/command-line
