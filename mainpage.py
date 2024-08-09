@@ -5,6 +5,8 @@ import pandas as pd
 import urllib3
 from bson.objectid import ObjectId
 
+# st.image("https://upload.wikimedia.org/wikipedia/en/f/f9/F5_Networks_logo.svg", caption="Your Image Caption", use_column_width=False)
+
 # Suppress only the single InsecureRequestWarning from urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -198,11 +200,24 @@ def get_devices():
         df = pd.DataFrame(st.session_state["credentials"])
         display_device_table(df)
 
-page = st.sidebar.selectbox("Select a page:", ["Overview", "Get Devices"])
+def app_finder():
+    st.title("App Finder")
+    st.write("This is the App Finder page.")
+    # Implement your App Finder functionality here
 
-if page == "Overview":
+def support():
+    st.title("Support")
+    st.write("This is the Support page.")
+    st.write("For assistance, please contact support@example.com or call 1-800-123-4567.")
+    st.write("You can also visit our [support website](https://example.com/support) for more information.")
+
+# Display all the pages as buttons on the sidebar
+st.sidebar.title("Navigation")
+if st.sidebar.button("Overview"):
     overview()
-elif page == "Get Devices":
+if st.sidebar.button("Get Devices"):
     get_devices()
-else:
-    st.error("Invalid page selection.")
+if st.sidebar.button("App Finder"):
+    app_finder()
+if st.sidebar.button("Support"):
+    support()
