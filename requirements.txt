@@ -5,3 +5,4 @@ pandas
 streamlit-aggrid
 urllib3
 streamlit-elements
+graphviz
