@@ -10,7 +10,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def connect_to_mongo():
     client = MongoClient("mongodb://myadmin:mypassword@localhost:27017/")
-    return client["f5bigip"]
+    return client["f5devices"]  # Updated database name
 
 def save_to_mongo(db, url, username, password, hostname):
     collection = db["credentials"]
@@ -91,7 +91,7 @@ def overview():
         if filter_text:
             df = df[df['hostname'].str.contains(filter_text, case=False)]
 
-        st.write("### Saved Credentials")
+        st.write("### F5 BIGIP Device List")
 
         # Create a container for the table
         with st.container():
