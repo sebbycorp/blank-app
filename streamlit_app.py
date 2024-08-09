@@ -157,22 +157,24 @@ def display_vips(vips):
 def overview():
     st.title("Overview")
 
-    # Input fields for URL, username, and password
-    url = st.text_input("Enter API URL (https:// required)")
-    username = st.text_input("Enter Username")
-    password = st.text_input("Enter Password", type="password")
+    # Add expander for input fields
+    with st.expander("Add Device"):
+        # Input fields for URL, username, and password
+        url = st.text_input("Enter API URL (https:// required)")
+        username = st.text_input("Enter Username")
+        password = st.text_input("Enter Password", type="password")
 
-    # Button to save data to MongoDB
-    if st.button("Add Device"):
-        if not url.startswith("https://"):
-            st.error("URL must start with https://")
-            return
-        hostname = get_f5_hostname(url, username, password)
-        status, color = get_f5_failover_status(url, username, password)
-        
-        if hostname and status and color:
-            db = connect_to_mongo()
-            save_to_mongo(db, url, username, password, hostname, status, color)
+        # Button to save data to MongoDB
+        if st.button("Add Device"):
+            if not url.startswith("https://"):
+                st.error("URL must start with https://")
+                return
+            hostname = get_f5_hostname(url, username, password)
+            status, color = get_f5_failover_status(url, username, password)
+            
+            if hostname and status and color:
+                db = connect_to_mongo()
+                save_to_mongo(db, url, username, password, hostname, status, color)
 
     # Button to fetch and display device list
     if st.button("Get Device List"):
